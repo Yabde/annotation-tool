@@ -1,0 +1,116 @@
+@import "./config.scss";
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* --------------------------
+  + reset custom
+-------------------------- */
+body {
+  font-family: $font-normal;
+  font-size: $font-size-base;
+  color: $font-base-color;
+  min-width: $min-width;
+  overflow-x: hidden;
+  background-color: $body-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  &:focus {
+      outline: 0;
+  }
+  &:active
+  {
+    outline: 0;
+  }
+}
+
+a:hover, a:visited, a:link, a:active{
+  text-decoration: none;
+}
+
+p, h1, h2, h3, h4, h5, h6{
+  font-family: $font-normal;
+  color: $font-base-color;
+}
+
+input, select, textarea, label{
+  font-family: $font-normal;
+  outline: none !important;
+}
+
+button{
+  outline: none !important;
+  box-shadow: none !important;
+  border:0;
+  appearance: none;
+  padding: 0;
+  background: none;
+}
+
+svg {
+  font-size: 0.8em;
+
+  &.svg-fill {
+    height: 30px;
+    path {
+      fill: $font-base-color;
+    }
+  }
+
+  &.svg-stroke {
+    height: 30px;
+    path {
+      stroke: $font-base-color;
+    }
+  }
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.cdk-overlay-pane {
+  max-width: none !important;
+}

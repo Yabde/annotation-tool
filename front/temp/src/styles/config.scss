@@ -1,0 +1,144 @@
+/* ------------------------------------
+  FONT AND LETTER SPACING
+--------------------------------------- */
+//FONT SIZE
+
+$font-size-project-name: 35px;
+$font-size-big: 20px;
+$font-size-title: 18px;
+$font-size-base: 14px;
+$font-size-higher: 15px;
+$font-size-lower: 12px;
+$font-size-button: 12px;
+
+$font-size-section-title: 24px;
+
+$font-base-low-resolution-sreen: 10px;
+
+$font-size-input: 13px;
+
+$font-size-modal-info: 13px;
+
+// FONT WEIGHT
+
+$font-weight-light: 300;
+$font-weight-bold: bold;
+
+// LINE HEIGHT
+
+$font-line-height: 25px;
+$font-tile-line-height: 15px;
+
+//FONTS
+// $font-normal: 'Metric'; /* Pourquoi la Police "Metric" à un vieux margin bottom dégueux ?*/
+$font-normal: "Comic Sans MS", cursive, sans-serif; // Ne pas oublié de changer :)
+$font-icon: 'FontAwesome';
+
+/* ------------------------------------
+  COLORS
+--------------------------------------- */
+$font-base-color: #000000;
+$font-secondary-color: #004165;
+$font-third-color: #0070B8;
+
+$base-shade-0: #000000;
+$base-shade-1: #858585;
+$base-shade-2: #CDCDCD;
+$base-shade-3: #F5F7F9;
+$base-shade-4: #FFFFFF;
+
+$light-shade-0: #DDDDDD;
+$light-shade-1: #C9C9C9C9;
+$light-shade-2: #EDE7E7;
+
+$light-blue-shade-2: #6593AC;
+$light-blue-shade-3: #DADADA;
+
+$main-shade-0: #004165;
+$main-shade-1: #005993;
+$main-shade-2: #0070B8;
+$main-shade-3: #82B8DE;
+$main-shade-4: #C8E4F8;
+$main-shade-5: #004165;
+
+$secondary-shade-0: #46665A;
+$secondary-shade-1: #44A27E;
+
+$third-shade-0: #978859;
+$third-shade-1: #C7A53A;
+$third-shade-2: #E99D2C;
+$third-shade-3: #F5F7F9;
+
+$red: #D11149;
+
+$body-color: #FFFFFF;
+$background-color: #F5F6FA;
+
+$modal-background-color: rgba(0, 0, 0, 0.3);
+
+
+/* ------------------------------------
+  BORDER RADIUS
+--------------------------------------- */
+
+$border-radius-base: 3px;
+$dropdown-currency-radius: 25px;
+
+/* ------------------------------------
+  HEIGHT AND WIDTH OF PARTS
+--------------------------------------- */
+
+//PAGE CONTENT
+$page-content-width: 1250px;
+$page-content-padding-side: 97px;
+$page-content-padding-bottom: 60px;
+$page-content-padding-top: 12px;
+
+//BUTTONS
+$buttons-height: 35px;
+$checkbox-size: 16px;
+$buttons-icon-size: 16px;
+$buttons-icon-size-bigger: 24px;
+$max-height-select-cutstom: 400px;
+$switch-button-width: 400px;
+
+// MODALS
+$modals-wrapper-padding: 25px;
+
+// MODAL CONFIRM
+$modal-confirm-width: 879px;
+$modal-confirm-height: 282px;
+
+// MODAL INFO
+$modal-info-width: 879px;
+
+
+/* ------------------------------------
+  Z-INDEX
+--------------------------------------- */
+
+$z-index-dropdown: 10;
+$z-index-info-modal: 100;
+$z-index-shop-modal: 99;
+$z-index-checkbox-img: 20;
+$z-index-modals: 101;
+
+
+/* ------------------------------------
+  MISCLEANOUS
+--------------------------------------- */
+
+$box-shadow-default: 0px 4px 4px rgba(66, 130, 183, 0.3);
+$box-shadow-dark: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$box-shaddow-high-blur: 0px 0px 7px rgba(66, 130, 183, 0.3);
+
+/* ------------------------------------
+  MEDIAQUERIES (BREAKPOINTS)
+--------------------------------------- */
+
+$min-width: 1020px;
+//breakpoints screen
+$screen-xxl: 1600px;
+$screen-xl: 1440px;
+$screen-l: 1280px;
+$screen-m: 1100px;

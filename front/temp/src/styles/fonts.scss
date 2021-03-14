@@ -1,0 +1,27 @@
+// EXAMPLE
+@font-face {
+    font-family: 'Metric';
+    src: url('../assets/fonts/metric/Metric-Regular.otf') format('otf'), url('../assets/fonts/metric/Metric-Regular.otf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Metric Bold';
+  src: url('../assets/fonts/metric/Metric-Bold.otf') format('otf'), url('../assets/fonts/metric/Metric-Bold.otf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
+
+
+@font-face {
+  font-family: 'Metric Light';
+  src: url('../assets/fonts/metric/Metric-Light.otf') format('otf'), url('../assets/fonts/metric/Metric-Light.otf') format('truetype');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Tiempos';
+  src: url('../assets/fonts/tiempos/Tiempos Headline-Black.otf') format('otf'), url('../assets/fonts/tiempos/Tiempos Headline-Black.otf') format('truetype');
+  font-style: normal;
+}

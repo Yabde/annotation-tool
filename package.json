@@ -1,0 +1,21 @@
+{
+  "name": "uhm_optdm",
+  "version": "1.0.0",
+  "main": "api/dist/api/src/server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/ekimetrics/uhm-optdm-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/ekimetrics/uhm-optdm-app#readme",
+  "description": "",
+  "scripts": {
+    "dev": "cd api/ && npm run dev",
+    "start": "cd api/ && npm run start",
+    "build-prod": "cd api/ && npm run build && cd ../front && npm run build-prod && cd .. ",
+    "build-staging": "cd api/ && npm run build && cd ../front && npm run build-staging && cd ..",
+    "build-dev": "cd api/ && npm run build && cd ../front && npm run build-dev && cd ..",
+    "test": "jest --coverage --verbose"
+  }
+}

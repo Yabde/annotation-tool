@@ -1,0 +1,69 @@
+@import "src/styles/config.scss";
+
+@mixin custom-icon($name, $color) {
+  -webkit-mask-image: url('/assets/icons/' + $name + '.svg');
+  mask-image: url('/assets/icons/' + $name + '.svg');
+  mask-size: 90% 90%;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  background: $color;
+}
+
+.alert {
+  color: $red;
+}
+
+.capitalize{
+  text-transform: capitalize;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal {
+  position: fixed;
+  z-index: $z-index-modals;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: $modal-background-color;
+  padding: $modals-wrapper-padding;
+  .page {
+    width: 100vw;
+    min-height: calc(100vh - 2 * #{$modals-wrapper-padding});
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    .body {
+      padding: 20px;
+      background: $base-shade-4;
+      .remove-button {
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+.no-data-found {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $base-shade-3;
+  color: $base-shade-1;
+  font-size: $font-size-project-name;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 0;
+}
