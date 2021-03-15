@@ -1,0 +1,22 @@
+/* .addImage {
+    display: flex;
+    flex-direction: column;
+} */
+
+.input-file > input {
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.45);
+    padding: 7px;
+    border-radius: 4px;
+    margin-right: 12px;
+}
+
+.button-submit {
+    background-color: #2bac2b;
+    color: white;
+    border-radius: 7px;
+    padding: 10px;
+    padding-inline: 13px;
+    border: none;
+    /* outline: none; */
+    font-size: 10px;
+}
