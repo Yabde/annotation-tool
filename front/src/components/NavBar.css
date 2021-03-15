@@ -1,0 +1,23 @@
+.navbar-wrapp {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    background-color: lightsteelblue;
+}
+
+.navbar-title {
+    flex: 1;
+    padding-left: 5px;
+}
+
+.navbar-link {
+    padding: 10px;
+    /* display: flex; */
+    /* justify-content: space-between; */
+}
+
+.navbar-link:hover {
+    background-color: lightgray;
+    border-radius: 5px;
+}

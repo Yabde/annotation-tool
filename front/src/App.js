@@ -1,9 +1,18 @@
+import React, { useState } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+
 import './App.css';
+import NavBar from './components/NavBar';
 
 function App() {
+  const [isLogged, setIsLogged] = useState(true);
+  
   return (
-    <div className="App">
-      <h1>Annotation Tool with MERN stach</h1>
+    <div className="app">
+      <NavBar isLogged={isLogged} />
+      <div className="app-body">
+
+      </div>
     </div>
   );
 }
