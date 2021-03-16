@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Annotation, AnnotationModel  } from "@models/Annotation";
+// import { Annotation, AnnotationModel  } from "@models/Annotation";
 import { HTTP400Error } from "@utils/http.errors";
 
 export async function getAnnotationByUser(req: Request, res: Response): Promise<void> {

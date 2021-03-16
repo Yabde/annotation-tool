@@ -27,9 +27,9 @@ loadFront();
 applyMiddleware(errorHandlers, router);
 
 function loadFront(): void {
-    router.use(express.static(path.resolve("./../front/dist/front")));
+    router.use(express.static(path.resolve("./../front/build")));
     router.get('/*', function (req: Request, res: Response, next: NextFunction) {
-        if (!req.url.includes('api')) {return res.sendFile(path.resolve("./../front/dist/front/index.html"));}
+        if (!req.url.includes('api')) {return res.sendFile(path.resolve("./../front/build/index.html"));}
         return next()
     });
 }
