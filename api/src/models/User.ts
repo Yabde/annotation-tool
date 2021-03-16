@@ -14,6 +14,7 @@ const UserSchema: Schema = new Schema({
     pwd: String,
     last_connection: Date,
     rights: Number,
+    annotations_ref: [String],
 }, { toJSON: { transform: omitPrivate } });
 
 function omitPrivate(doc: Document, obj: UserModel) {
@@ -22,11 +23,11 @@ function omitPrivate(doc: Document, obj: UserModel) {
     return obj;
 }
 
-UserSchema.pre('save', async function (user: any) {
-    // if (!validatePwd(user.pwd)) { throw new HTTP400Error("Wrong Password") }
-    // if (!validateEmail(user.email)) { throw new HTTP400Error("Wrong Email") }
-    await Promise.resolve()
-});
+// UserSchema.pre('save', async function (user: any) {
+//     // if (!validatePwd(user.pwd)) { throw new HTTP400Error("Wrong Password") }
+//     // if (!validateEmail(user.email)) { throw new HTTP400Error("Wrong Email") }
+//     await Promise.resolve()
+// });
 
 UserSchema.methods.fullName = function (): string { return (this.first_name.trim() + " " + this.last_name.trim()); };
 
