@@ -1,12 +1,14 @@
 export interface AnnotationItf {
-    images_ref: string,
-    coordinates: ICoordinates[],
-    user_ref: string
+    image_ref: string,
+    coord?: ICoordinates[],
+    userId: string
 }
 
 
 export interface ICoordinates {
-    coord: [],
-    image_ref: string,
-    user_ref: string
+    title: string,
+    x1: number,
+    x2: number,
+    y1: number,
+    y2: number
 }

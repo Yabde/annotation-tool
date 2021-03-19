@@ -1,4 +1,5 @@
 export interface UserItf {
+	readonly _id?: string;
 	first_name?: string;
 	last_name?: string;
 	email: string;
@@ -6,4 +7,6 @@ export interface UserItf {
 	pwd?: string;
 	last_connection?: Date;
 	rights?: number;
+	annotationsId?: [];
+	imagesId?: []
 }

@@ -3,7 +3,7 @@ import { UserItf } from "@shared/interfaces/user.itf";
 import { HTTP400Error } from "@utils/http.errors";
 import { validateEmail, validatePwd } from "@shared/functions/checks";
 
-export interface UserModel extends UserItf, Document {
+export interface UserModel extends Omit<UserItf, '_id'>, Document {
     fullName(): string;
 }
 
@@ -14,7 +14,8 @@ const UserSchema: Schema = new Schema({
     pwd: String,
     last_connection: Date,
     rights: Number,
-    annotations_ref: [String],
+    annotationsId: [String],
+    imagesId: [String],
 }, { toJSON: { transform: omitPrivate } });
 
 function omitPrivate(doc: Document, obj: UserModel) {

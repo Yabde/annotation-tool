@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-// import { Annotation, AnnotationModel  } from "@models/Annotation";
+import { Annotation, AnnotationModel  } from "@models/Annotation";
 import { HTTP400Error } from "@utils/http.errors";
 import { BlobServiceClient } from "@azure/storage-blob";
 import getStream from 'into-stream';
