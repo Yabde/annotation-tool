@@ -4,7 +4,8 @@ import {handleAPIDocs} from "./api.docs";
 
 export default [
     commonFunctions.handleCors,
-    commonFunctions.handleBodyRequestParsing,
+    // commonFunctions.handleBodyRequestParsing,
+    commonFunctions.allowLargePayload,
     commonFunctions.handleCompression,
     commonFunctions.connectToDataBase,
     handleAPIDocs,
