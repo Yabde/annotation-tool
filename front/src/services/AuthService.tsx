@@ -5,16 +5,22 @@ export async function login(email: string, password: string) {
   let credentials = { email: email, pwd: password };
   if (!validateCredentials(credentials)) return Promise.reject(false);
 
-  return axios.post('/login', credentials).then((result: any) => {
-    if (result.data !== null) {
-      const user = result.data;
-      // localStorage.setItem('user', user);
-      localStorage.setItem('token', user.token);
-      return user;
-    } else {
+  return axios
+    .post('/login', credentials)
+    .then((result: any) => {
+      if (result.data !== null) {
+        console.log('result : ', result);
+        const user = result.data;
+        // localStorage.setItem('user', user);
+        localStorage.setItem('token', user.token);
+        return user;
+      } else {
+        return Promise.reject('User not found');
+      }
+    })
+    .catch((error) => {
       return Promise.reject('User not found');
-    }
-  });
+    });
 }
 
 export async function getAuthenticatedUser() {
@@ -23,7 +29,7 @@ export async function getAuthenticatedUser() {
   console.log('Get Authenticated User');
   const rawToken = localStorage.getItem('token');
   let user: any;
-//   if (!rawToken) return Promise.resolve((user = 'null'));
+  //   if (!rawToken) return Promise.resolve((user = 'null'));
   if (!rawToken) return Promise.reject(null);
 
   user = parseJWT(rawToken);

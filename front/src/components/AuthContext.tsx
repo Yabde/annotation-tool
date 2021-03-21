@@ -24,7 +24,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     (state: State, action: AuthContextActions) => {
       switch (action.type) {
         case 'LOGIN': {
-          return { authenticated: true, user: action.type };
+          return { authenticated: true, user: action.user };
         }
         case 'LOGOUT': {
           return { authenticated: false, user: null };
