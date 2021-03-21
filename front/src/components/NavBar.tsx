@@ -6,18 +6,17 @@ import { logout as ApiLogout } from '../services/AuthService';
 import './NavBar.css';
 
 type Props = {
-  authenticated: null | boolean
-}
+  authenticated: null | boolean;
+};
 
 export const NavBar: React.FC<Props> = ({ authenticated }) => {
-  const { user, logout } = useAuth()
-  
+  const { user, logout } = useAuth();
 
   function handleLogout() {
-    console.log('logout')
-    logout()
+    console.log('logout');
+    logout();
     // TODO : temporary, improve how logout is handled ...
-    ApiLogout()
+    ApiLogout();
   }
 
   return (
@@ -40,12 +39,18 @@ export const NavBar: React.FC<Props> = ({ authenticated }) => {
       )} */}
       {authenticated && (
         <div className="navbar-link">
-          <button onClick={handleLogout} className="button-link">Log Out</button>
+          <button onClick={handleLogout} className="button-link">
+            Log Out
+          </button>
         </div>
       )}
-      <div className="navbar-link">Github</div>
+      <div className="navbar-link">
+        <a href="https://github.com/Yabde/annotation-tool" target="_blank">
+          Github
+        </a>
+      </div>
     </div>
   );
-}
+};
 
 export default NavBar;
