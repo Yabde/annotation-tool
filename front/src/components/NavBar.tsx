@@ -45,7 +45,11 @@ export const NavBar: React.FC<Props> = ({ authenticated }) => {
         </div>
       )}
       <div className="navbar-link">
-        <a href="https://github.com/Yabde/annotation-tool" target="_blank">
+        <a
+          href="https://github.com/Yabde/annotation-tool"
+          target="_blank"
+          rel="noreferrer"
+        >
           Github
         </a>
       </div>
