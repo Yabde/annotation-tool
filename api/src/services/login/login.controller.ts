@@ -28,6 +28,7 @@ export async function login(req: Request, res: Response, next: NextFunction): Pr
     function generateUserToken(): void {
         user = dataBaseUser;
         user.token = generateToken(dataBaseUser);
+        console.log('user Token : ', user);
     }
 
 

@@ -11,6 +11,7 @@ export async function getUsers(req: Request, res: Response): Promise<void> {
 }
 
 export async function getUserById(req: Request, res: Response): Promise<void> {
+    console.log('getUserById');
     let id = req.params.id;
 
     User.findById(id).then((user) => {
