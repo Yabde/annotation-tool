@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 function NavBar(props) {
+
+  console.log('navbar auth : ', props.authenticated)
+
   return (
     <div className="navbar-wrapp">
       <div className="navbar-title">
@@ -12,10 +15,7 @@ function NavBar(props) {
       <div className="navbar-link">
         <Link to="/all">All Images</Link>
       </div>
-      <div className="navbar-link">
-        <Link to="/add">Add</Link>
-      </div>
-      {!props.isLogged && (
+      {/* {!props.authenticated && (
         <React.Fragment>
           <div className="navbar-link">
             <Link to="/login">Log In</Link>
@@ -24,10 +24,10 @@ function NavBar(props) {
             <Link to="/register">Register</Link>
           </div>
         </React.Fragment>
-      )}
-      {props.isLogged && (
+      )} */}
+      {props.authenticated && (
         <div className="navbar-link">
-          <Link to="/logout">Log Out</Link>
+          <button className="button-link">Log Out</button>
         </div>
       )}
       <div className="navbar-link">Github</div>

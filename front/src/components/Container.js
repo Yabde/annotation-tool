@@ -1,14 +1,21 @@
-import React from 'react'
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import AddImage from './AddImage'
+import AddImage from './AddImage';
 
 function Container() {
-    return (
-        <div className="container">
-            <p>Container</p>
-            <AddImage />
-        </div>
-    )
+  return (
+    <React.Fragment>
+      <div className="container">
+        <p>Container</p>
+        <AddImage />
+      </div>
+
+      {/* <Switch>
+        <Route path="/all" render={() => <Container />} />
+      </Switch> */}
+    </React.Fragment>
+  );
 }
 
-export default Container
+export default Container;
