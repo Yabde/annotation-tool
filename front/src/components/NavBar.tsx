@@ -1,11 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from './AuthContext';
+import { logout as ApiLogout } from '../services/AuthService';
 
 import './NavBar.css';
 
-function NavBar(props) {
+type Props = {
+  authenticated: null | boolean
+}
 
-  console.log('navbar auth : ', props.authenticated)
+export const NavBar: React.FC<Props> = ({ authenticated }) => {
+  const { user, logout } = useAuth()
+  
+
+  function handleLogout() {
+    console.log('logout')
+    logout()
+    // TODO : temporary, improve how logout is handled ...
+    ApiLogout()
+  }
 
   return (
     <div className="navbar-wrapp">
@@ -25,9 +38,9 @@ function NavBar(props) {
           </div>
         </React.Fragment>
       )} */}
-      {props.authenticated && (
+      {authenticated && (
         <div className="navbar-link">
-          <button className="button-link">Log Out</button>
+          <button onClick={handleLogout} className="button-link">Log Out</button>
         </div>
       )}
       <div className="navbar-link">Github</div>
