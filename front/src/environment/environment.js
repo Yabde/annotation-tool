@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   origin: 'http://localhost:3001/',
-  api: 'http://localhost:3001/api/'
+  api: 'http://localhost:3001/api/',
+  blobURL: 'https://imagetool.blob.core.windows.net/blob-container'
 };
 
 /*

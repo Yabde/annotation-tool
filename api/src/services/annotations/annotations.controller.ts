@@ -34,18 +34,25 @@ export async function getImageFromDb(req: Request, res: Response, next: NextFunc
     //   console.log(blob);
     // }
 
-    let result = [];
+    let imagesName = [];
     for await (const item of containerClient.listBlobsByHierarchy("/", { prefix: 'images/'})) {
-        if (item.kind === "prefix") {
-          console.log(`\tBlobPrefix: ${item.name}`);
-          result.push(item.name)
-        } else {
-          console.log(`\tBlobItem: name - ${item.name}, last modified - ${item.properties.lastModified}`);
-        }
-      } 
+        // console.log(`\tBlobItem: name - ${item.name}`);
+        imagesName.push(item.name)
+    }
+    console.log('images Name : ', imagesName);
 
+    const idArray: string[] | undefined =  imageIds[0].imagesId;
+    let result = imagesName.filter((e) => {
+        const name = e.split('/')[1];
+        return idArray!.indexOf(name) !== -1;
+    })
+    console.log('PROCESS : ', process.env.AZURE_TOKEN_SAS);
+    result.forEach((v, idx) => {
+        result[idx] = v + process.env.AZURE_TOKEN_SAS;
+    })
+    console.log('result : ', result);
 
-    return res.status(200).send(imageIds[0]);
+    return res.status(200).send(result);
 }
 
 async function generateSasToke(resourceUri: any, signingKey: any, policyName: any, expiresInMins: any) {

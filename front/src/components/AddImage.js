@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from '../utils/axios';
 import UploadService from '../services/FileUploadService';
+import { environment } from '../environment/environment';
 
 import './AddImage.css';
 import Message from './Message';
@@ -8,6 +9,7 @@ import Message from './Message';
 function AddImage() {
   const [fileInputState, setfileInputState] = useState('');
   const [selectedFile, setselectedFile] = useState([]);
+  const [imageArray, setimageArray] = useState([]);
   const [progressInfos, setprogressInfos] = useState({ val: [] });
   const [message, setmessage] = useState([]);
   const [fileInfos, setfileInfos] = useState([]);
@@ -96,6 +98,21 @@ function AddImage() {
       });
   }
 
+  useEffect(() => {
+    let isCurrent = true;
+
+    axios.get('getImageFromDb').then((res) => {
+      if (isCurrent && res) {
+        console.log('get images : ', res);
+        setimageArray(res.data);
+      }
+    });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, []);
+
   // const previewFile = (file) => {
   //   const reader = new FileReader();
   //   reader.readAsDataURL(file);
@@ -150,14 +167,14 @@ function AddImage() {
       <div className="image-tempo">
         {previewImage && <img src={previewImage} alt="selected" />}
       </div>
-      <div className="image-tempo">
-        <img
-          src={
-            'https://imagetool.blob.core.windows.net/blob-container/0e94721f81957b52b97fe8ef9784189832ee712cd0a05e5ef9a50393ac59dde5.jpg?sv=2020-02-10&ss=b&srt=sco&sp=rwdlacx&se=2021-03-22T08:22:45Z&st=2021-03-22T00:22:45Z&spr=https&sig=L%2B5kSES2oG6tSWNBL%2Be1AW5JELHblu9tmRjCynvcAQw%3D'
-          }
-          alt="selected"
-        />
-      </div>
+
+      {imageArray.map((url) => {
+        return (
+          <div className="image-tempo">
+            <img src={environment.blobURL + '/' + url} alt="selected" />
+          </div>
+        );
+      })}
     </div>
   );
 }
