@@ -1,10 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import { Annotation } from "@models/Annotation";
-import { HTTP400Error } from "@utils/http.errors";
 import { BlobServiceClient } from "@azure/storage-blob";
 import getStream from 'into-stream';
-import mongoose from 'mongoose';
-import { User } from "@models/User";
+import { User, UserModel } from "@models/User";
+const { v4: uuidv4 } = require('uuid');
 
 export async function getAnnotationByUser(req: Request, res: Response): Promise<void> {
     let userId = req.params.userId;
@@ -46,17 +44,13 @@ export async function getImageFromDb(req: Request, res: Response, next: NextFunc
         const name = e.split('/')[1];
         return idArray!.indexOf(name) !== -1;
     })
-    console.log('PROCESS : ', process.env.AZURE_TOKEN_SAS);
+
     result.forEach((v, idx) => {
         result[idx] = v + process.env.AZURE_TOKEN_SAS;
     })
     console.log('result : ', result);
 
     return res.status(200).send(result);
-}
-
-async function generateSasToke(resourceUri: any, signingKey: any, policyName: any, expiresInMins: any) {
-
 }
 
 export async function deleteBlobByName(req: Request, res: Response, next: NextFunction) {
@@ -81,16 +75,27 @@ export async function uploadImageIntoDb(req: Request, res: Response, next: NextF
 
     // console.log('req : ', req.body);
     // console.log(req.body.image);
+    // console.log('USER ID : ', req.body.userId);
 
-    return Promise.resolve().then(() => {
+    return Promise.resolve().then(async () => {
         
         if (req.body.image) {
-            uploadImageIntoBlob(req.body.image, new mongoose.Types.ObjectId().toString());
+            const newName: string = uuidv4();
+            // uploadImageIntoBlob(req.body.image, new mongoose.Types.ObjectId().toString());
+            uploadImageIntoBlob(req.body.image, 'images/' + newName);
+
+            await User.findOneAndUpdate(
+                {_id: req.body.userId},
+                {$push: {imagesId: newName} }, (err, res) => {
+                    if (err) console.log(err);
+                });
+                
+            res.status(201).send('uploaded');
         }
-        res.status(201).send('caca');
+        res.status(400);  
     })
     .catch((err) => {
-        console.log('ERRORE !!! ', err);
+        console.log('ERROR !!! ', err);
         next(err);
     });
 }
@@ -110,11 +115,8 @@ async function uploadImageIntoBlob(imageBuffered: any, name: string) {
     const containerClient = blobServiceClient.getContainerClient(containerName);
 
     const stream = getStream(buffer);
-    console.log('stream : ', stream);
     const blockBlobClient = containerClient.getBlockBlobClient(`${name}`);
-    console.log('blockblobclient : ', blockBlobClient);
     const uploadBlobResponse = await blockBlobClient.upload(buffer, buffer.length);
-    console.log('uploadblobresponse : ', uploadBlobResponse);
 
     try {
         await blockBlobClient.uploadStream(stream,

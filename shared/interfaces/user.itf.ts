@@ -8,5 +8,5 @@ export interface UserItf {
 	last_connection?: Date;
 	rights?: number;
 	annotationsId?: [];
-	imagesId?: []
+	imagesId?: string[]
 }

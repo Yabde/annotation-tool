@@ -22,7 +22,7 @@ export const NavBar: React.FC<Props> = ({ authenticated }) => {
   return (
     <div className="navbar-wrapp">
       <div className="navbar-title">
-        <Link to="/">Annotation Tool</Link>
+        <Link to="/all">Annotation Tool</Link>
       </div>
       <div className="navbar-link">
         <Link to="/all">All Images</Link>

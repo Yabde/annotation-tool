@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from '../utils/axios';
 import UploadService from '../services/FileUploadService';
 import { environment } from '../environment/environment';
+import { useAuth } from './AuthContext';
 
 import './AddImage.css';
 import Message from './Message';
@@ -14,8 +15,11 @@ function AddImage() {
   const [message, setmessage] = useState([]);
   const [fileInfos, setfileInfos] = useState([]);
   const progressInfosRef = useRef(null);
+  const { user } = useAuth();
 
   const [previewImage, setpreviewImage] = useState('');
+
+  console.log('USER : ', user);
 
   function fileInputChange(e) {
     console.log('input changed');
@@ -50,51 +54,23 @@ function AddImage() {
     console.log('image to uplaod : ', image);
 
     await axios
-      .post('/uploadImageIntoDb', JSON.stringify({ image: image }), {
-        onUploadProgress: (progressEvent) => {
-          console.log(
-            'Upload Progress : ',
-            Math.round((progressEvent.loaded / progressEvent.total) * 100) + '%'
-          );
-        },
-      })
+      .post(
+        '/uploadImageIntoDb',
+        JSON.stringify({ image: image, userId: user._id }),
+        {
+          onUploadProgress: (progressEvent) => {
+            console.log(
+              'Upload Progress : ',
+              Math.round((progressEvent.loaded / progressEvent.total) * 100) +
+                '%'
+            );
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         setfileInputState('');
         setpreviewImage('');
-      });
-  }
-
-  function fileSelectHandler(e) {
-    console.log('file selected');
-    setselectedFile(e.target.files[0]);
-    // setselectedFile((selectedFile) => [...selectedFile, ...e.target.files]);
-    // console.log('selectedFiles : ', selectedFile);
-
-    // const fd = new FormData();
-    // fd.append('image', e.target.files[0], e.target.files[0].name);
-    // console.log('fd : ', fd);
-
-    previewFile(e.target.files[0]);
-  }
-
-  function fileUploadHandler(e) {
-    e.preventDefault();
-    console.log('upload button');
-    console.log('après bouton : ', selectedFile);
-    console.log('NAME : ', selectedFile.name);
-
-    axios
-      .post('/uploadImageIntoDb', selectedFile, {
-        onUploadProgress: (progressEvent) => {
-          console.log(
-            'Upload Progress : ',
-            Math.round((progressEvent.loaded / progressEvent.total) * 100) + '%'
-          );
-        },
-      })
-      .then((res) => {
-        console.log(res);
       });
   }
 
@@ -112,32 +88,6 @@ function AddImage() {
       isCurrent = false;
     };
   }, []);
-
-  // const previewFile = (file) => {
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onloadend = () => {
-  //     setpreviewImage(reader.result);
-  //   };
-  // };
-
-  // useEffect(() => {
-  //   const fd = new FormData();
-  //   fd.append('image', selectedFile, selectedFile.name);
-
-  //   axios
-  //     .post('upload-image', fd, {
-  //       onUploadProgress: (progressEvent) => {
-  //         console.log(
-  //           'Upload Progress : ',
-  //           Math.round((progressEvent.loaded / progressEvent.total) * 100) + '%'
-  //         );
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //     });
-  // }, [selectedFile]);
 
   return (
     <div className="addImage">
@@ -168,13 +118,19 @@ function AddImage() {
         {previewImage && <img src={previewImage} alt="selected" />}
       </div>
 
-      {imageArray.map((url) => {
-        return (
-          <div className="image-tempo">
-            <img src={environment.blobURL + '/' + url} alt="selected" />
-          </div>
-        );
-      })}
+      <div className="image-container">
+        {imageArray.map((url) => {
+          return (
+            <div className="image-item">
+              <img
+                className="img-wrapped"
+                src={environment.blobURL + '/' + url}
+                alt="selected"
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
