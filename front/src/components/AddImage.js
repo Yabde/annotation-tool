@@ -33,7 +33,7 @@ function AddImage() {
     };
     reader.onerror = () => {
       console.error('ERROR !');
-    }
+    };
   };
 
   function handleSubmitFile(e) {
@@ -48,7 +48,7 @@ function AddImage() {
     console.log('image to uplaod : ', image);
 
     await axios
-      .post('/uploadImageIntoDb', JSON.stringify({ image: image}), {
+      .post('/uploadImageIntoDb', JSON.stringify({ image: image }), {
         onUploadProgress: (progressEvent) => {
           console.log(
             'Upload Progress : ',
@@ -149,6 +149,14 @@ function AddImage() {
 
       <div className="image-tempo">
         {previewImage && <img src={previewImage} alt="selected" />}
+      </div>
+      <div className="image-tempo">
+        <img
+          src={
+            'https://imagetool.blob.core.windows.net/blob-container/0e94721f81957b52b97fe8ef9784189832ee712cd0a05e5ef9a50393ac59dde5.jpg?sv=2020-02-10&ss=b&srt=sco&sp=rwdlacx&se=2021-03-22T08:22:45Z&st=2021-03-22T00:22:45Z&spr=https&sig=L%2B5kSES2oG6tSWNBL%2Be1AW5JELHblu9tmRjCynvcAQw%3D'
+          }
+          alt="selected"
+        />
       </div>
     </div>
   );

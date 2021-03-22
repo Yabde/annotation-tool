@@ -1,4 +1,4 @@
-import { getAnnotationByUser, uploadImageIntoDb } from "./annotations.controller";
+import { getAnnotationByUser, uploadImageIntoDb, getImageFromDb } from "./annotations.controller";
 
 
 export default [
@@ -12,4 +12,9 @@ export default [
         method: "post",
         handler: uploadImageIntoDb
     },
+    {
+        path: "/api/getImageFromDb",
+        method: "get",
+        handler: getImageFromDb
+    }
 ];
