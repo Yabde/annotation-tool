@@ -4,7 +4,25 @@ import cors from "cors";
 import compression from "compression";
 import * as databaseConnector from "../utils/data.base.connector"
 
-export const handleCors = (router: Router) => router.use(cors());
+export const handleCors = (router: Router) => {
+    const whitelist: Array<string> = [
+        "https://predictive-annotation-tool.azurewebsites.net",
+    ];
+
+    if (process.env.NODE_ENV === 'dev') { whitelist.push('http://localhost', 'http://localhost:4200', 'http://localhost:3000', 'http://localhost:8100', 'capacitor://localhost') }
+    var corsOptionsDelegate = {
+    origin: function (origin: any, callback: any) {
+        if (!origin) return callback(null, true);
+        if (whitelist.indexOf(origin) === -1) {
+        var msg = 'The request as been blocked by CORS policy.';
+        return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+    };
+
+    router.use(cors(corsOptionsDelegate));
+};
 
 // export const handleBodyRequestParsing = (router: Router) => {
 //     router.use(parser.urlencoded({limit: '20mb', extended: true, parameterLimit: 100000}));
