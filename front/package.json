@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "PORT=3006 react-scripts start",
-    "build-prod": "npm i && react-scripts build",
+    "build-prod": "npm i && env-cmd -f .env.production react-scripts build",
     "build-staging": "npm i && react-scripts build",
     "build-dev": "npm i && react-scripts build",
     "build": "react-scripts build",
