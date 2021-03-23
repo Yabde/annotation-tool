@@ -9,7 +9,7 @@ export const handleCors = (router: Router) => {
         "https://predictive-annotation-tool.azurewebsites.net",
     ];
 
-    if (process.env.NODE_ENV === 'dev') { whitelist.push('http://localhost', 'http://localhost:4200', 'http://localhost:3000', 'http://localhost:8100', 'capacitor://localhost') }
+    if (process.env.NODE_ENV === 'dev') { whitelist.push('http://localhost', 'http://localhost:4200', 'http://localhost:3000', 'http://localhost:3006', 'http://localhost:8100', 'capacitor://localhost') }
     var corsOptionsDelegate = {
     origin: function (origin: any, callback: any) {
         if (!origin) return callback(null, true);
