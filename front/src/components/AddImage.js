@@ -51,7 +51,6 @@ function AddImage() {
 
   async function uploadImage(image) {
     console.log('upload');
-    console.log('image to uplaod : ', image);
 
     await axios
       .post(
@@ -77,6 +76,7 @@ function AddImage() {
   useEffect(() => {
     let isCurrent = true;
 
+    console.log('RELOAD');
     axios.get('getImageFromDb').then((res) => {
       if (isCurrent && res) {
         console.log('get images : ', res);
@@ -121,12 +121,19 @@ function AddImage() {
       <div className="image-container">
         {imageArray.map((url) => {
           return (
-            <div className="image-item">
-              <img
-                className="img-wrapped"
-                src={environment.blobURL + '/' + url}
-                alt="selected"
-              />
+            <div className="card">
+              <div className="image-item">
+                <img
+                  className="img-wrapped"
+                  src={environment.blobURL + '/' + url}
+                  alt="selected"
+                />
+              </div>
+              
+              <div className="image-info">
+                <p>Title</p>
+                <p>Annotation</p>
+              </div>
             </div>
           );
         })}
