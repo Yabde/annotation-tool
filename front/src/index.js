@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { environment } from './environment/environment';
+// import { environment } from './environment/environment';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './components/AuthContext';
+import { AuthProvider } from './auth/AuthContext';
 
 ReactDOM.render(
   <BrowserRouter>

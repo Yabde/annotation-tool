@@ -1,5 +1,4 @@
 import React, { useContext, useReducer, useEffect } from 'react';
-import axios from '../utils/axios';
 
 import { getAuthenticatedUser } from '../services/AuthService';
 

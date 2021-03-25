@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from '../utils/axios';
-import UploadService from '../services/FileUploadService';
+// import UploadService from '../services/FileUploadService';
+import { FaRegTrashAlt } from 'react-icons/fa'
 import { environment } from '../environment/environment';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../auth/AuthContext';
 
 import './AddImage.css';
 import Message from './Message';
@@ -131,8 +132,11 @@ function AddImage() {
               </div>
               
               <div className="image-info">
-                <p>Title</p>
-                <p>Annotation</p>
+                <div className="info-data">This image contains :</div>
+                <div className="card-button-wrapper">
+                  <button className="card-button annotate">Annotate</button>
+                  <button className="card-button delete"><FaRegTrashAlt /></button>
+                </div>
               </div>
             </div>
           );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../auth/AuthContext';
 import { logout as ApiLogout } from '../services/AuthService';
 
 import './NavBar.css';
@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const NavBar: React.FC<Props> = ({ authenticated }) => {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
 
   function handleLogout() {
     console.log('logout');

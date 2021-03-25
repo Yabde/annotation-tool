@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+// import { Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
 import NavBar from './components/NavBar';
 // import Container from './components/Container';
 import PrimaryLayout from './components/PrimaryLayout'
-import { useAuth } from './components/AuthContext';
+import { useAuth } from './auth/AuthContext';
 import UnauthenticatedLayout from './components/UnauthenticatedLayout'
 
 function App() {
-  // const [isLogged, setIsLogged] = useState(true);
   const { authenticated } = useAuth();
   // const authenticated = true;
 

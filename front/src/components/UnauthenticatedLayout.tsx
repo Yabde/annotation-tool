@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { LoginForm } from './LoginForm';
+import { LoginForm } from '../auth/LoginForm';
 
-import { useAuth } from './AuthContext';
+import { useAuth } from '../auth/AuthContext';
 
 export const UnauthenticatedLayout: React.FC = () => {
-  const { login, authenticated } = useAuth();
+  const { login } = useAuth();
 
 //   const redirectTo = authenticated ? (
 //     <Redirect to="/all" />
