@@ -91,7 +91,7 @@ function AddImage() {
 
   return (
     <div className="addImage">
-      <Message message="test" />
+      {/* <Message message="test" /> */}
       <p>AddImage</p>
       <form onSubmit={handleSubmitFile}>
         <div className="input-file">
