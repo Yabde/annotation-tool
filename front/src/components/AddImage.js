@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from '../utils/axios';
 // import UploadService from '../services/FileUploadService';
-import { FaRegTrashAlt } from 'react-icons/fa'
-import { environment } from '../environment/environment';
 import { useAuth } from '../auth/AuthContext';
 
 import './AddImage.css';
 import Message from './Message';
+import Card from './Card';
 
 function AddImage() {
   const [fileInputState, setfileInputState] = useState('');
@@ -78,7 +77,7 @@ function AddImage() {
     let isCurrent = true;
 
     console.log('RELOAD');
-    axios.get('getImageFromDb').then((res) => {
+    axios.get('/getImageFromDb').then((res) => {
       if (isCurrent && res) {
         console.log('get images : ', res);
         setimageArray(res.data);
@@ -120,25 +119,13 @@ function AddImage() {
       </div>
 
       <div className="image-container">
-        {imageArray.map((url) => {
+        {imageArray.map((imageInfo) => {
+          console.log('URL : ', imageInfo)
           return (
-            <div className="card">
-              <div className="image-item">
-                <img
-                  className="img-wrapped"
-                  src={environment.blobURL + '/' + url}
-                  alt="selected"
-                />
-              </div>
-              
-              <div className="image-info">
-                <div className="info-data">This image contains :</div>
-                <div className="card-button-wrapper">
-                  <button className="card-button annotate">Annotate</button>
-                  <button className="card-button delete"><FaRegTrashAlt /></button>
-                </div>
-              </div>
-            </div>
+            <Card
+              key={imageInfo.id} 
+              imageInfo={imageInfo}
+            />
           );
         })}
       </div>
