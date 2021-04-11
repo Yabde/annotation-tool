@@ -1,4 +1,4 @@
-# App Starter
+# Annotation Tool
 
 ## Getting Started
 
@@ -7,9 +7,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 #### api: 
-* **.env**: `get this file on Teams/Code/Application Credentials/app_starter`
-* **dev.env**: `get this file on Teams/Code/Application Credentials/app_starter`
-* **local.env**: `get this file on Teams/Code/Application Credentials/app_starter`
+* **.env**: `create your own environnement file with thoses variables : `
 
 ### Installing
 
@@ -22,8 +20,6 @@ These instructions will get you a copy of the project up and running on your loc
 * `cd front/`.
 * run `npm install`.
 
-* Replace <my_app> in environment files with your  actual endpoints
-
 ## Deployment 
 
 #### api: 
@@ -33,4 +29,4 @@ These instructions will get you a copy of the project up and running on your loc
 
 #### front: 
 * **launch the front locally**: 
-* run `ng s`
+* run `npm run start`
