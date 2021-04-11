@@ -1,14 +1,14 @@
 {
-  "name": "uhm_optdm",
+  "name": "annotation-tool",
   "version": "1.0.0",
   "main": "api/dist/api/src/server.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/ekimetrics/uhm-optdm-app.git"
+    "url": "git@github.com:Yabde/annotation-tool.git"
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/ekimetrics/uhm-optdm-app#readme",
+  "homepage": "https://github.com/Yabde/annotation-tool",
   "description": "",
   "scripts": {
     "dev": "cd api/ && npm run dev",
