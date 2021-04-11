@@ -40,17 +40,36 @@ export async function getImageFromDb(req: Request, res: Response, next: NextFunc
     console.log('images Name : ', imagesName);
 
     const idArray: string[] | undefined =  imageIds[0].imagesId;
-    let result = imagesName.filter((e) => {
+    let idArrayFiltered = imagesName.filter((e) => {
         const name = e.split('/')[1];
         return idArray!.indexOf(name) !== -1;
     })
 
-    result.forEach((v, idx) => {
-        result[idx] = v + process.env.AZURE_TOKEN_SAS;
+    let result: Object[] = [];
+    idArrayFiltered.forEach((v, idx) => {
+        result.push({
+            url: v + process.env.AZURE_TOKEN_SAS,
+            id: v.split('/')[1]
+        })
     })
     console.log('result : ', result);
 
     return res.status(200).send(result);
+}
+
+export async function getImageById(req: Request, res: Response, next: NextFunction) {
+    console.log('getImageById');
+
+    let imageId = req.body.imageId;
+    // console.log('PARAMS single URL : ', imageId);
+
+    // let imageUrl = await User.find({ imagesId: imageId }, '_id imagesId');
+
+    // console.log('SINGLE image URL : ', imageUrl);
+
+    let imageUrl = 'images/' + imageId + process.env.AZURE_TOKEN_SAS;
+
+    return res.status(200).send({imageUrl: imageUrl});
 }
 
 export async function deleteBlobByName(req: Request, res: Response, next: NextFunction) {
