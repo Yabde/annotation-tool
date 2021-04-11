@@ -28,9 +28,9 @@ export const ImageDetail: React.FC<Props> = ({ imageName }) => {
     };
   }, []);
 
-  function onInputChange(e) {
+  function onInputChange(e: any) {
     console.log('onInputChange');
-    
+
   }
 
   return (
